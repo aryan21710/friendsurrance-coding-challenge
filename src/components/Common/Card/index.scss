@@ -1,0 +1,48 @@
+.wrapper {
+  width: 85vw;
+	height: 35vh;
+	border-radius: 5px;
+	display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+}
+.expand {
+	width: 80vw;
+	height: 33vh;
+	border-radius: 5px;
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid grey;
+	transition: height 0.2s ease-in-out;
+}
+
+.collapse {
+	width: 80vw;
+	height: 13vh;
+	border-radius: 5px;
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+  border: 1px solid grey;
+  transition: height 0.2s ease-in-out;
+}
+.titleRow,
+.descRow,
+.cancelRow {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+  margin: 3vh 0vw;
+}
+
+.invisible {
+	display: none;
+}
+
+.toggle {
+  padding:0.5vh 0.5vw;
+  cursor: pointer;
+}
