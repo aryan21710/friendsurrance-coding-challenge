@@ -1,12 +1,19 @@
 import React from 'react';
 import { Button } from './components/Common/Button';
-import {BLUE,GREEN} from './common/constants'
+import { Input } from './components/Common/Input';
 
-const App:React.FC=()=>{
-    const onClickHandler=()=> alert('hi');
+import { BLUE, GREEN } from './common/constants';
+
+const App:React.FC = ()=>{
+    const onClickHandler = ()=> {return}
+    const onChangeHandler = ()=> {return}
+
     return (
-        <Button onClickHandler={onClickHandler} bkgColor={GREEN}/>
+        <React.Fragment>
+            <Button onClickHandler={onClickHandler} bkgColor={GREEN}/>
+            <Input type={'password'} placeHolderText={'ENTER YOUR NAME'} onChangeHandler={onChangeHandler}/>
+        </React.Fragment>
     );
-}
+};
 
 export default App;

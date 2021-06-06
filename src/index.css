@@ -34,3 +34,14 @@ code {
   height: 15vh;
 }
 
+input:focus {
+text-decoration: none;
+outline: none;
+background: rgba(193, 214, 245, 0.952);
+color: black;
+font: 1.5vw;
+}
+
+input::placeholder {
+  font: 1.2vw;
+}
