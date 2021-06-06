@@ -1,8 +1,11 @@
 import React from 'react';
+import { Button } from './components/Common/Button';
+import {BLUE} from './common/constants'
 
-function App() {
+const App:React.FC=()=>{
+    const onClickHandler=()=> alert('hi');
     return (
-        <h1>BOILER PLATE FOR TS-ESLINT-CRA APP</h1>
+        <Button onClickHandler={onClickHandler} bkgColor={'green'}/>
     );
 }
 

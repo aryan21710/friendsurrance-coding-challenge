@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.root {
+  width: 40vw;
+  height: 20vh;
+  margin: 10vh auto;
+  transition: height 0.5s;
+  cursor: pointer;
+  background: grey;
+
+}
+
+.root span {
+  width: 15vw;
+  height:4vh;
+  border: 1px solid black;
+  float: left;
+}
+
+#desc {
+  width: 36vw;
+  height: 15vh;
+}
+
