@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button } from './components/Common/Button';
-import {BLUE} from './common/constants'
+import {BLUE,GREEN} from './common/constants'
 
 const App:React.FC=()=>{
     const onClickHandler=()=> alert('hi');
     return (
-        <Button onClickHandler={onClickHandler} bkgColor={'green'}/>
+        <Button onClickHandler={onClickHandler} bkgColor={GREEN}/>
     );
 }
 
