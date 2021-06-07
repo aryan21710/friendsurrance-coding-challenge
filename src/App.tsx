@@ -1,9 +1,9 @@
 import React from 'react';
-import { Card } from './components/Common/Card';
+import Form from './components/Form';
 
 const App:React.FC = ()=>(
-    <div style={{ margin: '5vh 10vw' }}>
-        <Card />
+    <div style={{ margin: '5vh 10vw', height: '80vh' }}>
+        <Form/>
     </div>
 );
 

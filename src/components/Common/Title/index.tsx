@@ -4,7 +4,7 @@ import './index.scss';
 interface IProps {
     text: string;
 }
-export const Question:React.FC<IProps> = ({ text }) => (
+export const Title:React.FC<IProps> = ({ text }) => (
     <span className="question">
         {text}
     </span>

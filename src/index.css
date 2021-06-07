@@ -15,7 +15,7 @@ code {
 .root {
   width: 40vw;
   height: 20vh;
-  margin: 10vh auto;
+  margin:2vh auto;
   transition: height 0.5s;
   cursor: pointer;
   background: grey;
@@ -45,3 +45,5 @@ font: 1.5vw;
 input::placeholder {
   font: 1.2vw;
 }
+
+

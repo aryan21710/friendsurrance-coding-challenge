@@ -16,7 +16,13 @@
     <div id="app">
 
     </div>
-    <!-- <div class="root">
+    <!-- <div class="root slide">
+      <span>TITLE:-</span>
+      <span>ANSWER:-</span>
+      <button>SUBMIT</button>
+      <span id="desc">description:-</span>
+    </div>
+    <div class="root">
       <span>TITLE:-</span>
       <span>ANSWER:-</span>
       <button>SUBMIT</button>
@@ -27,12 +33,12 @@
 
       <script>
         const collapse=()=>{
-          document.querySelector('.root').style.height='4vh';
+          document.querySelector('.slide').style.height='4vh';
           document.querySelector('#desc').style.display="none"
         }
 
         const expand=()=>{
-          document.querySelector('.root').style.height='20vh';
+          document.querySelector('.slide').style.height='20vh';
           document.querySelector('#desc').style.display="block";
 
         }

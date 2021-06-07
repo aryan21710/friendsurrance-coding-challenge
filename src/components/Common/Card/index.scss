@@ -1,15 +1,14 @@
 .wrapper {
-  width: 85vw;
-	height: 35vh;
+	width: 85vw;
 	border-radius: 5px;
 	display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-
+	flex-direction: row;
+	// align-items: center;
+	margin: 2vh 0vw;
 }
 .expand {
 	width: 80vw;
-	height: 33vh;
+	height: 35vh;
 	border-radius: 5px;
 	border: 1px solid black;
 	display: flex;
@@ -20,22 +19,38 @@
 
 .collapse {
 	width: 80vw;
-	height: 13vh;
+	height: 10vh;
 	border-radius: 5px;
 	border: 1px solid black;
 	display: flex;
 	flex-direction: column;
-  border: 1px solid grey;
-  transition: height 0.2s ease-in-out;
+	border: 1px solid grey;
+	transition: height 0.2s ease-in-out;
 }
 .titleRow,
 .descRow,
-.cancelRow {
+.btnRow {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
-  margin: 3vh 0vw;
+	margin: 2vh 0vw;
+}
+.descRow {
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-around;
+	padding: 0vh 6vw;
+	height: 15vh;
+
+}
+.btnRow {
+	justify-content: start;
+	margin-left: 6vw;
+}
+
+.btnRow > button {
+	margin-right: 2vw;
 }
 
 .invisible {
@@ -43,6 +58,6 @@
 }
 
 .toggle {
-  padding:0.5vh 0.5vw;
-  cursor: pointer;
+	padding: 0.5vh 0.5vw;
+	cursor: pointer;
 }
