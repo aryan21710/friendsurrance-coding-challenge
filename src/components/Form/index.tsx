@@ -3,10 +3,11 @@ import { Card } from '../Common/Card';
 import { data } from '../../common/constants';
 import { IData } from '../../common/interfaces';
 import { BLUE, GREEN, GREY } from '../../common/constants';
+import SimpleReactValidator from 'simple-react-validator';
 
 const Form: React.FC = () => {
     const [formData, setFormData] = useState<IData[]>(data);
-
+    const simpleValidator = useRef(new SimpleReactValidator());
 
 
     const toggleExpandedHandler = (cardid: string) => (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -20,9 +21,9 @@ const Form: React.FC = () => {
                 };
             } else {
                 if (data.isCardSubmitted) {
-                    return { ...data, classname: 'collapse' };
+                    return { ...data, classname: 'collapse', toggleExpandedState: false };
                 } else {
-                    return { ...data, classname: 'collapse disabled' };
+                    return { ...data, classname: 'collapse disabled', toggleExpandedState: false };
                 }
             }
         });
@@ -36,7 +37,9 @@ const Form: React.FC = () => {
                     ...data,
                     isCardSubmitted: false,
                     submitBtnColor: GREY,
-                    answer: ''
+                    answer: '',
+                    submitBtnText: 'Submit',
+                    statusIconColor: GREY
                 };
             } else {
                 return { ...data };
@@ -46,12 +49,25 @@ const Form: React.FC = () => {
     };
 
     const onSubmitHandler = (cardid: string)=>(e: React.MouseEvent<HTMLButtonElement>)=>{
+        let nextCard=-1;
+        const validationError=simpleValidator.current.fieldValid(cardid);
+        console.log('validationError',validationError)
         const updatedFormData = formData.map((data, idx) => {
             if (data.question === cardid) {
+                nextCard=idx+1
+                return {
+                    ...data,
+                    isCardSubmitted: validationError ? true : false,
+                    submitBtnColor: GREEN,
+                    submitBtnText: validationError ? 'Edit' : 'Submit',
+                    statusIconColor: validationError ? GREEN : GREY
+                };
+            } else if (idx===nextCard && validationError) {
                 return {
                     ...data,
                     isCardSubmitted: true,
-                    submitBtnColor: GREEN
+                    isCardDisabled: false,
+                    classname: 'collapse'
                 };
             } else {
                 return { ...data };
@@ -75,10 +91,14 @@ const Form: React.FC = () => {
         });
         setFormData([...updatedFormData]);
     };
+
+
+    
     return (
         <React.Fragment>
             {formData.map((data, idx) => (
                 <Card
+                    key={idx}
                     question={data.question}
                     classname={data.classname}
                     description={data.description}
@@ -93,6 +113,11 @@ const Form: React.FC = () => {
                     onSubmitHandler={onSubmitHandler(data.question)}
                     onCancelHandler={onCancelHandler(data.question)}
                     onChangeHandler={onChangeHandler(data.question)}
+                    submitBtnText={data.submitBtnText}
+                    statusIconColor={data.statusIconColor}
+                    validation={data.validation}
+                    // checkValidationError={checkValidationError(data.question)}
+                    simpleValidator={simpleValidator}
                 />
             ))}
         </React.Fragment>

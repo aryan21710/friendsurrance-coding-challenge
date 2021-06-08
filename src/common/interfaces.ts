@@ -9,4 +9,8 @@ export interface IData {
   placeHolderText: string;
   isCardSubmitted: boolean;
   classname: string;
+  submitBtnText: string;
+  statusIconColor: string;
+  validation: string;
+  validationError?: boolean
 }

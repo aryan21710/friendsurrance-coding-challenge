@@ -7,7 +7,7 @@ import { Description } from '../Description';
 import { Status } from '../Status';
 import { IData } from '../../../common/interfaces';
 
-import { BLUE, GREEN, GREY } from '../../../common/constants';
+import { GREY } from '../../../common/constants';
 import './index.scss';
 import '../../../../node_modules/font-awesome/css/font-awesome.min.css';
 
@@ -15,7 +15,9 @@ interface IProps extends IData {
 	toggleExpandedHandler: ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void) | undefined;
     onSubmitHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
     onCancelHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
-	onChangeHandler: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
+    onChangeHandler: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
+    // checkValidationError: (error: boolean)=>void;
+    simpleValidator : React.MutableRefObject<SimpleReactValidator>
 }
 
 export const Card: React.FC<IProps> = (props) => {
@@ -33,17 +35,20 @@ export const Card: React.FC<IProps> = (props) => {
         onSubmitHandler,
         onChangeHandler,
         onCancelHandler,
-        isCardSubmitted
+        submitBtnText,
+        statusIconColor,
+        validation,
+        simpleValidator
+        // checkValidationError
     } = props;
-    const simpleValidator = useRef(new SimpleReactValidator());
-
+    // answer.length > 0 && checkValidationError(question,simpleValidator.current.fieldValid(question));
     return (
         <div className='wrapper'>
             <div className={classname}>
                 <section className='titleRow'>
                     <Title text={question} />
                     <Title text={answer.length > 0 ? `${answer.charAt(0).toUpperCase()}${answer.substr(1)}` : answer} />
-                    <Status isCardDisabled={isCardDisabled} isCardSubmitted={isCardSubmitted}/>
+                    <Status statusIconColor={statusIconColor}/>
                 </section>
                 <section className={toggleExpandedState ? 'descRow' : 'invisible'}>
                     <Description text={description} />
@@ -55,14 +60,14 @@ export const Card: React.FC<IProps> = (props) => {
                         onChangeHandler={onChangeHandler}
                         onBlur={simpleValidator.current.showMessageFor(question)}
                     />
-                    {simpleValidator.current.message(question, answer, 'required|alpha')}
+                    {answer.length > 0 && simpleValidator.current.message(question, answer, validation)}
                 </section>
                 <section className={toggleExpandedState ? 'btnRow' : 'invisible'}>
                     <Button
                         isCardDisabled={isCardDisabled}
                         onClickHandler={onSubmitHandler}
                         bkgColor={answer.length > 0 ? submitBtnColor : GREY}
-                        text={isCardSubmitted ? 'EDIT' : 'SUBMIT'}
+                        text={submitBtnText}
                     />
                     <Button onClickHandler={onCancelHandler} bkgColor={GREY} text='Cancel' />
                 </section>

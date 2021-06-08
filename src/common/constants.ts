@@ -11,7 +11,11 @@ export const data = [{
     submitBtnColor : GREY,
     placeHolderText: 'Enter Your First Name',
     isCardSubmitted: false,
-    classname: 'collapse'
+    classname: 'collapse',
+    submitBtnText: 'Submit',
+    statusIconColor: GREY,
+    validation: 'required|alpha',
+    validationError: false
 }, {
     question: 'Last Name',
     inputType : 'text',
@@ -22,7 +26,11 @@ export const data = [{
     submitBtnColor : GREY,
     placeHolderText: 'Enter Your Last Name',
     isCardSubmitted: false,
-    classname: 'collapse disabled'
+    classname: 'collapse disabled',
+    submitBtnText: 'Submit',
+    statusIconColor: GREY,
+    validation: 'required|alpha',
+    validationError: false
 }, {
     question: 'Email',
     inputType : 'email',
@@ -33,7 +41,11 @@ export const data = [{
     submitBtnColor : GREY,
     placeHolderText: 'Enter Your Email Address',
     isCardSubmitted: false,
-    classname: 'collapse disabled'
+    classname: 'collapse disabled',
+    submitBtnText: 'Submit',
+    statusIconColor: GREY,
+    validation: "required|between:5,100|email",
+    validationError: false
 }, {
     question: 'DOB',
     inputType : 'date',
@@ -44,7 +56,11 @@ export const data = [{
     submitBtnColor : GREY,
     placeHolderText: 'Enter Your Email Address',
     isCardSubmitted: false,
-    classname: 'collapse disabled'
+    classname: 'collapse disabled',
+    submitBtnText: 'Submit',
+    statusIconColor: GREY,
+    validation: 'required|alpha',
+    validationError: false
 }];
 
 /*
@@ -60,6 +76,7 @@ new emp or existing emp. new emp then disable the current proj name.
 first card :-
 classname: collapse always
 
+false error
 
 
 */
