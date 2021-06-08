@@ -51,7 +51,7 @@ const Form: React.FC = () => {
 
     const onSubmitHandler = (cardid: string)=>(e: React.MouseEvent<HTMLButtonElement>)=>{
         let nextCard = -1;
-        const validationError = cardid === 'Gender' ? true : simpleValidator.current.fieldValid(cardid);
+        const validationError = cardid === 'Gender' || cardid === 'Insurance Status'? true : simpleValidator.current.fieldValid(cardid);
         console.log('validationError', validationError);
         const updatedFormData = formData.map((data, idx) => {
             if (data.question === cardid) {

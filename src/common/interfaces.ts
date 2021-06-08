@@ -14,4 +14,5 @@ export interface IData {
   validation: string;
   optionsArr?: string[]|undefined;
   inputValue: string;
+  disabledNextCardAnswer?: string|undefined;
 }

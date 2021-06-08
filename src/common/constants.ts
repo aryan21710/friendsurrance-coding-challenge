@@ -118,19 +118,36 @@ export const data = [
     {
         question: 'Insurance Status',
         inputType: 'select',
+        disabledNextCardAnswer: 'No',
         inputValue: '',
         optionsArr: ['Other', 'Yes', 'No'],
         answer: '',
-        isCardDisabled: true,
+        isCardDisabled: false,
         description: 'Are You Insured?',
         toggleExpandedState: false,
         submitBtnColor: GREY,
         placeHolderText: 'Are You Insured?',
         isCardSubmitted: false,
-        classname: 'collapse disabled',
+        classname: 'collapse',
         submitBtnText: 'Submit',
         statusIconColor: GREY,
         validation: ''
+    },
+    {
+        question: 'Insurance Company',
+        inputType: 'text',
+        inputValue: '',
+        answer: '',
+        isCardDisabled: false,
+        description: 'Please Enter Your Insurance Company Name?',
+        toggleExpandedState: false,
+        submitBtnColor: GREY,
+        placeHolderText: 'Enter Your Insurance Company Name?',
+        isCardSubmitted: false,
+        classname: 'collapse',
+        submitBtnText: 'Submit',
+        statusIconColor: GREY,
+        validation: 'required|alpha_space|between:3,30'
     },
 ];
 

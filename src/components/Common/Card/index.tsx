@@ -66,7 +66,7 @@ export const Card: React.FC<IProps> = (props) => {
                         onBlur={simpleValidator.current.showMessageFor(question)}
                     />
 
-                    {inputValue.length > 0 && simpleValidator.current.message(question, inputValue, validation)}
+                    {(inputValue.length > 0 && inputType!=="select") && simpleValidator.current.message(question, inputValue, validation)}
                 </section>
                 <section className={toggleExpandedState ? 'btnRow' : 'invisible'}>
                     <Button
