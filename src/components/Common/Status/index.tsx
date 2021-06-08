@@ -1,8 +1,19 @@
 import React from 'react';
 import './index.scss';
-import { GREEN, GREY } from '../../../common/constants';
+import { BLUE, GREEN, GREY } from '../../../common/constants';
 interface IProps {
-    isCardDisabled: boolean;
+	isCardDisabled: boolean;
+	isCardSubmitted: boolean;
 }
-export const Status:React.FC<IProps> = ({ isCardDisabled }) => <div className='status' style={{ background: isCardDisabled ? GREY : GREEN }}></div>;
-
+export const Status: React.FC<IProps> = ({ isCardDisabled, isCardSubmitted }) => {
+    const deriveStyle = () => {
+        if (isCardDisabled) {
+            return { background: GREY };
+        } else if (isCardSubmitted) {
+            return { background: BLUE };
+        } else {
+            return { background: GREEN };
+        }
+    };
+    return <div className='status' style={deriveStyle()}></div>;
+};

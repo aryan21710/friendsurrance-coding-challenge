@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Card } from '../Common/Card';
 import { data } from '../../common/constants';
 import { IData } from '../../common/interfaces';
+import { BLUE, GREEN, GREY } from '../../common/constants';
 
 const Form: React.FC = () => {
     const [formData, setFormData] = useState<IData[]>(data);
@@ -9,7 +10,7 @@ const Form: React.FC = () => {
 
 
     const toggleExpandedHandler = (cardid: string) => (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-        const updatedFormData = formData.map((data, idx) => {
+        const updatedFormData = formData.map((data) => {
             if (data.question === cardid) {
                 return {
                     ...data,
@@ -27,8 +28,35 @@ const Form: React.FC = () => {
         setFormData([...updatedFormData]);
     };
 
-    const onClickHandler = ()=>{
-        return;
+    const onCancelHandler = (cardid: string)=>(e: React.MouseEvent<HTMLButtonElement>)=>{
+        const updatedFormData = formData.map((data, idx) => {
+            if (data.question === cardid) {
+                return {
+                    ...data,
+                    isCardSubmitted: false,
+                    submitBtnColor: GREEN,
+                    answer: ''
+                };
+            } else {
+                return { ...data };
+            }
+        });
+        setFormData([...updatedFormData]);
+    };
+
+    const onSubmitHandler = (cardid: string)=>(e: React.MouseEvent<HTMLButtonElement>)=>{
+        const updatedFormData = formData.map((data, idx) => {
+            if (data.question === cardid) {
+                return {
+                    ...data,
+                    isCardSubmitted: true,
+                    submitBtnColor: BLUE
+                };
+            } else {
+                return { ...data };
+            }
+        });
+        setFormData([...updatedFormData]);
     };
     const onChangeHandler = (cardid: string)=>(e: React.ChangeEvent<HTMLInputElement>) => {
         const updatedFormData = formData.map((data, idx) => {
@@ -60,7 +88,8 @@ const Form: React.FC = () => {
                     placeHolderText={data.placeHolderText}
                     submitBtnColor={data.submitBtnColor}
                     toggleExpandedHandler={toggleExpandedHandler(data.question)}
-                    onClickHandler={onClickHandler}
+                    onSubmitHandler={onSubmitHandler(data.question)}
+                    onCancelHandler={onCancelHandler(data.question)}
                     onChangeHandler={onChangeHandler(data.question)}
                 />
             ))}

@@ -19,7 +19,7 @@ export const data = [{
     isCardDisabled: true,
     description: 'Please Enter Your Last Name',
     toggleExpandedState: false,
-    submitBtnColor : GREEN,
+    submitBtnColor : GREY,
     placeHolderText: 'Enter Your Last Name',
     isCardSubmitted: false,
     classname: 'collapse disabled'
@@ -30,7 +30,7 @@ export const data = [{
     isCardDisabled: true,
     description: 'Please Enter Your Email Address',
     toggleExpandedState: false,
-    submitBtnColor : GREEN,
+    submitBtnColor : GREY,
     placeHolderText: 'Enter Your Email Address',
     isCardSubmitted: false,
     classname: 'collapse disabled'
@@ -41,7 +41,7 @@ export const data = [{
     isCardDisabled: true,
     description: 'Please Enter Your Date Of Birth',
     toggleExpandedState: false,
-    submitBtnColor : GREEN,
+    submitBtnColor : GREY,
     placeHolderText: 'Enter Your Email Address',
     isCardSubmitted: false,
     classname: 'collapse disabled'

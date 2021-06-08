@@ -13,7 +13,8 @@ import '../../../../node_modules/font-awesome/css/font-awesome.min.css';
 
 interface IProps extends IData {
 	toggleExpandedHandler: ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void) | undefined;
-	onClickHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onSubmitHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onCancelHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
 	onChangeHandler: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
 }
 
@@ -29,8 +30,10 @@ export const Card: React.FC<IProps> = (props) => {
         submitBtnColor,
         toggleExpandedHandler,
         classname,
-        onClickHandler,
+        onSubmitHandler,
         onChangeHandler,
+        onCancelHandler,
+        isCardSubmitted
     } = props;
     const simpleValidator = useRef(new SimpleReactValidator());
 
@@ -40,7 +43,7 @@ export const Card: React.FC<IProps> = (props) => {
                 <section className='titleRow'>
                     <Title text={question} />
                     <Title text={answer.length > 0 ? `${answer.charAt(0).toUpperCase()}${answer.substr(1)}` : answer} />
-                    <Status isCardDisabled={isCardDisabled} />
+                    <Status isCardDisabled={isCardDisabled} isCardSubmitted={isCardSubmitted}/>
                 </section>
                 <section className={toggleExpandedState ? 'descRow' : 'invisible'}>
                     <Description text={description} />
@@ -57,11 +60,11 @@ export const Card: React.FC<IProps> = (props) => {
                 <section className={toggleExpandedState ? 'btnRow' : 'invisible'}>
                     <Button
                         isCardDisabled={isCardDisabled}
-                        onClickHandler={onClickHandler}
-                        bkgColor={isCardDisabled ? GREY : GREEN}
-                        text='Submit'
+                        onClickHandler={onSubmitHandler}
+                        bkgColor={submitBtnColor}
+                        text={isCardSubmitted ? 'EDIT' : 'SUBMIT'}
                     />
-                    <Button onClickHandler={onClickHandler} bkgColor={GREY} text='Cancel' />
+                    <Button onClickHandler={onCancelHandler} bkgColor={GREY} text='Cancel' />
                 </section>
             </div>
             <span className='toggle'>
