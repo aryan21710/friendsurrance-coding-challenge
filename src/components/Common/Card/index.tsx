@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
+import SimpleReactValidator from 'simple-react-validator';
 import { Input } from '../Input';
 import { Button } from '../Button';
 import { Title } from '../Title';
@@ -11,9 +12,9 @@ import './index.scss';
 import '../../../../node_modules/font-awesome/css/font-awesome.min.css';
 
 interface IProps extends IData {
-    toggleExpandedHandler: ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void) | undefined;
-    onClickHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    onChangeHandler: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
+	toggleExpandedHandler: ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void) | undefined;
+	onClickHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
+	onChangeHandler: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
 }
 
 export const Card: React.FC<IProps> = (props) => {
@@ -29,9 +30,9 @@ export const Card: React.FC<IProps> = (props) => {
         toggleExpandedHandler,
         classname,
         onClickHandler,
-        onChangeHandler
+        onChangeHandler,
     } = props;
-
+    const simpleValidator = useRef(new SimpleReactValidator());
 
     return (
         <div className='wrapper'>
@@ -49,7 +50,9 @@ export const Card: React.FC<IProps> = (props) => {
                         type={inputType}
                         placeHolderText={placeHolderText}
                         onChangeHandler={onChangeHandler}
+                        onBlur={simpleValidator.current.showMessageFor(question)}
                     />
+                    {simpleValidator.current.message(question, answer, 'required|alpha')}
                 </section>
                 <section className={toggleExpandedState ? 'btnRow' : 'invisible'}>
                     <Button

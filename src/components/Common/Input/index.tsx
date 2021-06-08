@@ -7,6 +7,7 @@ interface IProps {
 	type: string;
 	isCardDisabled?: boolean;
 	answer: string;
+	onBlur: any;
 }
 export const Input: React.FC<IProps> = ({ answer, type, onChangeHandler, placeHolderText, isCardDisabled = false }) => (
     <input disabled={isCardDisabled} className={isCardDisabled ? 'disabled input' : 'input'} type={type} value={answer}

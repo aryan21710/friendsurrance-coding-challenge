@@ -47,4 +47,8 @@ input:placeholder {
   color: grey;
 }
 
+.srv-validation-message {
+  color: red;
+}
+
 

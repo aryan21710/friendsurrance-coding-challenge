@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Card } from '../Common/Card';
 import { data } from '../../common/constants';
 import { IData } from '../../common/interfaces';
 
 const Form: React.FC = () => {
     const [formData, setFormData] = useState<IData[]>(data);
+
+
+
     const toggleExpandedHandler = (cardid: string) => (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-
-
         const updatedFormData = formData.map((data, idx) => {
             if (data.question === cardid) {
                 return {
