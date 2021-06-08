@@ -51,4 +51,9 @@ input:placeholder {
   color: red;
 }
 
+select#Gender {
+  width: 15vw;
+  padding: 0.2vh 0vw;
+}
+
 
