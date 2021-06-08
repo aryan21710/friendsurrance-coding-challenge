@@ -11,24 +11,35 @@ import './index.scss';
 import '../../../../node_modules/font-awesome/css/font-awesome.min.css';
 
 interface IProps extends IData {
-    toggleExpandedHandler: ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void) | undefined
+    toggleExpandedHandler: ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void) | undefined;
+    onClickHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onChangeHandler: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
 }
 
 export const Card: React.FC<IProps> = (props) => {
-    const { question, description, inputType, answer, isCardDisabled, toggleExpandedState, placeHolderText, submitBtnColor, toggleExpandedHandler } = props;
-    const onClickHandler = () => {
-        alert('hi');
-    };
-    const onChangeHandler = () => {
-        alert('hi');
-    };
+    const {
+        question,
+        description,
+        inputType,
+        answer,
+        isCardDisabled,
+        toggleExpandedState,
+        placeHolderText,
+        submitBtnColor,
+        toggleExpandedHandler,
+        classname,
+        onClickHandler,
+        onChangeHandler
+    } = props;
+
+
     return (
         <div className='wrapper'>
-            <div className={toggleExpandedState ? 'expand' : 'collapse'}>
+            <div className={classname}>
                 <section className='titleRow'>
                     <Title text={question} />
-                    <Title text={'YOUR NAME'} />
-                    <Status/>
+                    <Title text={answer.length > 0 ? `${answer.charAt(0).toUpperCase()}${answer.substr(1)}` : answer} />
+                    <Status isCardDisabled={isCardDisabled} />
                 </section>
                 <section className={toggleExpandedState ? 'descRow' : 'invisible'}>
                     <Description text={description} />
@@ -51,7 +62,11 @@ export const Card: React.FC<IProps> = (props) => {
                 </section>
             </div>
             <span className='toggle'>
-                <i className={toggleExpandedState ? 'fa fa-minus' : 'fa fa-plus'} onClick={toggleExpandedHandler}></i>
+                {isCardDisabled ? (
+                    <i className={toggleExpandedState ? 'fa fa-minus' : 'fa fa-plus'}></i>
+                ) : (
+                    <i className={toggleExpandedState ? 'fa fa-minus' : 'fa fa-plus'} onClick={toggleExpandedHandler}></i>
+                )}
             </span>
         </div>
     );

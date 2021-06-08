@@ -42,8 +42,9 @@ color: black;
 font: 1.5vw;
 }
 
-input::placeholder {
+input:placeholder {
   font: 1.2vw;
+  color: grey;
 }
 
 

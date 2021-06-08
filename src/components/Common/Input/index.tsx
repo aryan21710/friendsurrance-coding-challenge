@@ -9,5 +9,6 @@ interface IProps {
 	answer: string;
 }
 export const Input: React.FC<IProps> = ({ answer, type, onChangeHandler, placeHolderText, isCardDisabled = false }) => (
-    <input disabled={isCardDisabled} className={isCardDisabled ? 'disabled input' : 'input'} type={type} value={answer} onChange={onChangeHandler} placeholder={placeHolderText} />
+    <input disabled={isCardDisabled} className={isCardDisabled ? 'disabled input' : 'input'} type={type} value={answer}
+        onChange={onChangeHandler} placeholder={placeHolderText} />
 );

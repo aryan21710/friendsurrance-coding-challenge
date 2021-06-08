@@ -4,39 +4,47 @@ export const GREY = 'rgb(176, 181, 176)';
 export const data = [{
     question: 'First Name',
     inputType : 'text',
-    answer: 'Your First Name',
+    answer: '',
     isCardDisabled: false,
     description: 'Please Enter Your First Name',
     toggleExpandedState: false,
     submitBtnColor : GREEN,
     placeHolderText: 'Enter Your First Name',
+    isCardSubmitted: false,
+    classname: 'collapse'
 }, {
     question: 'Last Name',
     inputType : 'text',
-    answer: 'Your Last Name',
+    answer: '',
     isCardDisabled: true,
     description: 'Please Enter Your Last Name',
     toggleExpandedState: false,
     submitBtnColor : GREEN,
     placeHolderText: 'Enter Your Last Name',
+    isCardSubmitted: false,
+    classname: 'collapse disabled'
 }, {
     question: 'Email',
     inputType : 'email',
-    answer: 'Your Email Address',
-    isCardDisabled: false,
+    answer: '',
+    isCardDisabled: true,
     description: 'Please Enter Your Email Address',
     toggleExpandedState: false,
     submitBtnColor : GREEN,
     placeHolderText: 'Enter Your Email Address',
+    isCardSubmitted: false,
+    classname: 'collapse disabled'
 }, {
     question: 'DOB',
     inputType : 'date',
-    answer: 'Your Date Of Birth',
-    isCardDisabled: false,
+    answer: '',
+    isCardDisabled: true,
     description: 'Please Enter Your Date Of Birth',
     toggleExpandedState: false,
     submitBtnColor : GREEN,
     placeHolderText: 'Enter Your Email Address',
+    isCardSubmitted: false,
+    classname: 'collapse disabled'
 }];
 
 /*
@@ -46,4 +54,12 @@ infected with covid in last 1 month. If yes then vaccination type will be disabl
 FirstName, LastName, age, gender, email, phone, address,  are you insured, insurance company, insurance id, infected with covid in last 1 month, vaccination type.
 
 new emp or existing emp. new emp then disable the current proj name.
+*/
+
+/*
+first card :-
+classname: collapse always
+
+
+
 */

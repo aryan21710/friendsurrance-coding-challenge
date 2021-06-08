@@ -7,4 +7,6 @@ export interface IData {
   toggleExpandedState: boolean;
   submitBtnColor : string;
   placeHolderText: string;
+  isCardSubmitted: boolean;
+  classname: string;
 }
