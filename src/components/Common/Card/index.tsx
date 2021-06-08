@@ -3,7 +3,6 @@ import SimpleReactValidator from 'simple-react-validator';
 import { Input } from '../Input';
 import { Button } from '../Button';
 import { Title } from '../Title';
-import { Description } from '../Description';
 import { Status } from '../Status';
 import { IData } from '../../../common/interfaces';
 
@@ -54,7 +53,7 @@ export const Card: React.FC<IProps> = (props) => {
                     <Status statusIconColor={statusIconColor}/>
                 </section>
                 <section className={toggleExpandedState ? 'descRow' : 'invisible'}>
-                    <Description text={description} />
+                    <Title textType="description" text={description} />
                     <Input
                         answer={answer}
                         isCardDisabled={isCardDisabled}

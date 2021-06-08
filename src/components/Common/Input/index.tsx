@@ -12,7 +12,7 @@ interface IProps {
 	onSelectHandler: ((event: React.ChangeEvent<HTMLSelectElement>) => void) | undefined;
 	inputValue: string;
 }
-export const Input: React.FC<IProps> = ({ optionsArr, onSelectHandler, inputValue, type, onChangeHandler, placeHolderText, isCardDisabled = false }) => type === 'select' && optionsArr? (
+export const Input: React.FC<IProps> = ({ optionsArr, onSelectHandler, inputValue, type, onChangeHandler, placeHolderText, isCardDisabled = false }) => type === 'select' && optionsArr ? (
     <select
         value={inputValue}
         onChange={onSelectHandler}

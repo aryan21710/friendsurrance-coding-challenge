@@ -119,7 +119,7 @@ export const data = [
         question: 'Insurance Status',
         inputType: 'select',
         inputValue: '',
-        optionsArr: ['Other','Yes', 'No'],
+        optionsArr: ['Other', 'Yes', 'No'],
         answer: '',
         isCardDisabled: true,
         description: 'Are You Insured?',
