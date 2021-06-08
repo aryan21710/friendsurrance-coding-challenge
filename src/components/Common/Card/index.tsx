@@ -17,14 +17,14 @@ interface IProps extends IData {
     onCancelHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
     onChangeHandler: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
     simpleValidator : React.MutableRefObject<SimpleReactValidator>
+    optionsArr?: string[]|undefined;
     onSelectHandler: ((event: React.ChangeEvent<HTMLSelectElement>) => void) | undefined;
-    questionCount: number;
+    inputValue: string;
 }
 
 export const Card: React.FC<IProps> = (props) => {
     const {
         question,
-        questionCount,
         description,
         inputType,
         answer,
@@ -41,7 +41,9 @@ export const Card: React.FC<IProps> = (props) => {
         statusIconColor,
         validation,
         simpleValidator,
-        onSelectHandler
+        onSelectHandler,
+        optionsArr,
+        inputValue
     } = props;
     return (
         <div className='wrapper'>
@@ -53,33 +55,25 @@ export const Card: React.FC<IProps> = (props) => {
                 </section>
                 <section className={toggleExpandedState ? 'descRow' : 'invisible'}>
                     <Description text={description} />
-                    { questionCount === 2 ?
-                        <select
-                            id="Gender"
-                            name="PetitionerGender"
-                            className="select-css"
-                            value={answer}
-                            onChange={onSelectHandler}
-                        >
-                            <option value="Other">Other</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select> :   <Input
-                            answer={answer}
-                            isCardDisabled={isCardDisabled}
-                            type={inputType}
-                            placeHolderText={placeHolderText}
-                            onChangeHandler={onChangeHandler}
-                            onBlur={simpleValidator.current.showMessageFor(question)}
-                        />}
+                    <Input
+                        answer={answer}
+                        isCardDisabled={isCardDisabled}
+                        type={inputType}
+                        placeHolderText={placeHolderText}
+                        onChangeHandler={onChangeHandler}
+                        optionsArr={optionsArr}
+                        onSelectHandler={onSelectHandler}
+                        inputValue={inputValue}
+                        onBlur={simpleValidator.current.showMessageFor(question)}
+                    />
 
-                    {answer.length > 0 && simpleValidator.current.message(question, answer, validation)}
+                    {inputValue.length > 0 && simpleValidator.current.message(question, inputValue, validation)}
                 </section>
                 <section className={toggleExpandedState ? 'btnRow' : 'invisible'}>
                     <Button
                         isCardDisabled={isCardDisabled}
                         onClickHandler={onSubmitHandler}
-                        bkgColor={answer.length > 0 ? submitBtnColor : GREY}
+                        bkgColor={inputValue.length > 0 ? submitBtnColor : GREY}
                         text={submitBtnText}
                     />
                     <Button onClickHandler={onCancelHandler} bkgColor={GREY} text='Cancel' />

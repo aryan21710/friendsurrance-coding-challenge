@@ -6,6 +6,7 @@ export const data = [
         question: 'First Name',
         inputType: 'text',
         answer: '',
+        inputValue: '',
         isCardDisabled: false,
         description: 'Please Enter Your First Name',
         toggleExpandedState: false,
@@ -21,6 +22,7 @@ export const data = [
         question: 'Last Name',
         inputType: 'text',
         answer: '',
+        inputValue: '',
         isCardDisabled: true,
         description: 'Please Enter Your Last Name',
         toggleExpandedState: false,
@@ -34,7 +36,9 @@ export const data = [
     },
     {
         question: 'Gender',
-        inputType: 'number',
+        inputType: 'select',
+        inputValue: '',
+        optionsArr: ['Other', 'Male', 'Female'],
         answer: '',
         isCardDisabled: true,
         description: 'Please Enter Your Gender',
@@ -45,11 +49,12 @@ export const data = [
         classname: 'collapse disabled',
         submitBtnText: 'Submit',
         statusIconColor: GREY,
-        validation: 'required|numeric|min:18,num|max:90,num'
+        validation: ''
     },
     {
         question: 'Age',
         inputType: 'number',
+        inputValue: '',
         answer: '',
         isCardDisabled: true,
         description: 'Please Enter Your Age In Years',
@@ -65,6 +70,7 @@ export const data = [
     {
         question: 'Email',
         inputType: 'email',
+        inputValue: '',
         answer: '',
         isCardDisabled: true,
         description: 'Please Enter Your Email Address',
@@ -80,14 +86,15 @@ export const data = [
     {
         question: 'Phone Number',
         inputType: 'text',
+        inputValue: '',
         answer: '',
-        isCardDisabled: false,
+        isCardDisabled: true,
         description: 'Please Enter Your Phone Number',
         toggleExpandedState: false,
         submitBtnColor: GREY,
         placeHolderText: 'Enter Your Phone Number',
         isCardSubmitted: false,
-        classname: 'collapse',
+        classname: 'collapse disabled',
         submitBtnText: 'Submit',
         statusIconColor: GREY,
         validation: 'required|numeric|between:8,11|phone'
@@ -95,18 +102,36 @@ export const data = [
     {
         question: 'Address',
         inputType: 'text',
+        inputValue: '',
         answer: '',
-        isCardDisabled: false,
+        isCardDisabled: true,
         description: 'Please Enter Your Residential Address',
         toggleExpandedState: false,
         submitBtnColor: GREY,
         placeHolderText: 'Enter Your Residential Address',
         isCardSubmitted: false,
-        classname: 'collapse',
+        classname: 'collapse disabled',
         submitBtnText: 'Submit',
         statusIconColor: GREY,
         validation: 'required|between:5,100'
-    }
+    },
+    {
+        question: 'Insurance Status',
+        inputType: 'select',
+        inputValue: '',
+        optionsArr: ['Other','Yes', 'No'],
+        answer: '',
+        isCardDisabled: true,
+        description: 'Are You Insured?',
+        toggleExpandedState: false,
+        submitBtnColor: GREY,
+        placeHolderText: 'Are You Insured?',
+        isCardSubmitted: false,
+        classname: 'collapse disabled',
+        submitBtnText: 'Submit',
+        statusIconColor: GREY,
+        validation: ''
+    },
 ];
 
 /*
@@ -115,14 +140,6 @@ infected with covid in last 1 month. If yes then vaccination type will be disabl
 
 FirstName, LastName, age, gender, email, phone, address,  are you insured, insurance company, insurance id, infected with covid in last 1 month, vaccination type.
 
-new emp or existing emp. new emp then disable the current proj name.
 */
 
-/*
-first card :-
-classname: collapse always
 
-false error
-
-
-*/

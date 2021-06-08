@@ -37,6 +37,7 @@ const Form: React.FC = () => {
                     ...data,
                     isCardSubmitted: false,
                     submitBtnColor: GREY,
+                    inputValue: '',
                     answer: '',
                     submitBtnText: 'Submit',
                     statusIconColor: GREY
@@ -57,6 +58,7 @@ const Form: React.FC = () => {
                 nextCard = idx + 1;
                 return {
                     ...data,
+                    answer: validationError ? data.inputValue : '',
                     isCardSubmitted: validationError ? true : false,
                     submitBtnColor: GREEN,
                     submitBtnText: validationError ? 'Edit' : 'Submit',
@@ -81,7 +83,7 @@ const Form: React.FC = () => {
                 const element = e.target as HTMLInputElement;
                 return {
                     ...data,
-                    answer: element.value,
+                    inputValue: element.value,
                     placeHolderText: '',
                     submitBtnColor: element.value.length > 0 ? GREEN : GREY
                 };
@@ -97,7 +99,7 @@ const Form: React.FC = () => {
             if (data.question === cardid) {
                 return {
                     ...data,
-                    answer: e.target.value,
+                    inputValue: e.target.value,
                     submitBtnColor: e.target.value.length > 0 ? GREEN : GREY
                 };
             } else {
@@ -115,7 +117,6 @@ const Form: React.FC = () => {
                 <Card
                     key={idx}
                     question={data.question}
-                    questionCount={idx}
                     classname={data.classname}
                     description={data.description}
                     inputType={data.inputType}
@@ -125,6 +126,7 @@ const Form: React.FC = () => {
                     toggleExpandedState={data.toggleExpandedState}
                     placeHolderText={data.placeHolderText}
                     submitBtnColor={data.submitBtnColor}
+                    inputValue={data.inputValue}
                     toggleExpandedHandler={toggleExpandedHandler(data.question)}
                     onSubmitHandler={onSubmitHandler(data.question)}
                     onCancelHandler={onCancelHandler(data.question)}
@@ -133,6 +135,7 @@ const Form: React.FC = () => {
                     statusIconColor={data.statusIconColor}
                     validation={data.validation}
                     simpleValidator={simpleValidator}
+                    optionsArr={data.optionsArr}
                     onSelectHandler={onSelectHandler(data.question)}
                 />
             ))}

@@ -12,4 +12,6 @@ export interface IData {
   submitBtnText: string;
   statusIconColor: string;
   validation: string;
+  optionsArr?: string[]|undefined;
+  inputValue: string;
 }
