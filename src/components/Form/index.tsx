@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Card } from '../Common/Card';
 import { data } from '../../common/constants';
 import { IData } from '../../common/interfaces';
-import { BLUE, GREEN, GREY } from '../../common/constants';
+import { GREEN, GREY } from '../../common/constants';
 import SimpleReactValidator from 'simple-react-validator';
 
 const Form: React.FC = () => {
@@ -17,7 +17,7 @@ const Form: React.FC = () => {
                     ...data,
                     toggleExpandedState: !data.toggleExpandedState,
                     classname: !data.toggleExpandedState ? 'expand' : 'collapse',
-                   
+
                 };
             } else {
                 if (data.isCardSubmitted) {
@@ -49,12 +49,12 @@ const Form: React.FC = () => {
     };
 
     const onSubmitHandler = (cardid: string)=>(e: React.MouseEvent<HTMLButtonElement>)=>{
-        let nextCard=-1;
-        const validationError=simpleValidator.current.fieldValid(cardid);
-        console.log('validationError',validationError)
+        let nextCard = -1;
+        const validationError = cardid==='Gender' ? true : simpleValidator.current.fieldValid(cardid);
+        console.log('validationError', validationError);
         const updatedFormData = formData.map((data, idx) => {
             if (data.question === cardid) {
-                nextCard=idx+1
+                nextCard = idx + 1;
                 return {
                     ...data,
                     isCardSubmitted: validationError ? true : false,
@@ -62,7 +62,7 @@ const Form: React.FC = () => {
                     submitBtnText: validationError ? 'Edit' : 'Submit',
                     statusIconColor: validationError ? GREEN : GREY
                 };
-            } else if (idx===nextCard && validationError) {
+            } else if (idx === nextCard && validationError) {
                 return {
                     ...data,
                     isCardSubmitted: true,
@@ -76,7 +76,7 @@ const Form: React.FC = () => {
         setFormData([...updatedFormData]);
     };
     const onChangeHandler = (cardid: string)=>(e: React.ChangeEvent<HTMLInputElement>) => {
-        const updatedFormData = formData.map((data, idx) => {
+        const updatedFormData = formData.map((data) => {
             if (data.question === cardid) {
                 const element = e.target as HTMLInputElement;
                 return {
@@ -92,14 +92,30 @@ const Form: React.FC = () => {
         setFormData([...updatedFormData]);
     };
 
+    const onSelectHandler = (cardid: string)=>(e:React.ChangeEvent<HTMLSelectElement>)=>{
+        const updatedFormData = formData.map((data) => {
+            if (data.question === cardid) {
+                return {
+                    ...data,
+                    answer: e.target.value,
+                    submitBtnColor: e.target.value.length > 0 ? GREEN : GREY
+                };
+            } else {
+                return { ...data };
+            }
+        });
+        setFormData([...updatedFormData]);
+    };
 
-    
+
+
     return (
         <React.Fragment>
             {formData.map((data, idx) => (
                 <Card
                     key={idx}
                     question={data.question}
+                    questionCount={idx}
                     classname={data.classname}
                     description={data.description}
                     inputType={data.inputType}
@@ -116,8 +132,8 @@ const Form: React.FC = () => {
                     submitBtnText={data.submitBtnText}
                     statusIconColor={data.statusIconColor}
                     validation={data.validation}
-                    // checkValidationError={checkValidationError(data.question)}
                     simpleValidator={simpleValidator}
+                    onSelectHandler={onSelectHandler(data.question)}
                 />
             ))}
         </React.Fragment>

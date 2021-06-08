@@ -12,5 +12,4 @@ export interface IData {
   submitBtnText: string;
   statusIconColor: string;
   validation: string;
-  validationError?: boolean
 }

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import SimpleReactValidator from 'simple-react-validator';
 import { Input } from '../Input';
 import { Button } from '../Button';
@@ -16,13 +16,15 @@ interface IProps extends IData {
     onSubmitHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
     onCancelHandler: (e: React.MouseEvent<HTMLButtonElement>) => void;
     onChangeHandler: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
-    // checkValidationError: (error: boolean)=>void;
     simpleValidator : React.MutableRefObject<SimpleReactValidator>
+    onSelectHandler: ((event: React.ChangeEvent<HTMLSelectElement>) => void) | undefined;
+    questionCount: number;
 }
 
 export const Card: React.FC<IProps> = (props) => {
     const {
         question,
+        questionCount,
         description,
         inputType,
         answer,
@@ -38,10 +40,9 @@ export const Card: React.FC<IProps> = (props) => {
         submitBtnText,
         statusIconColor,
         validation,
-        simpleValidator
-        // checkValidationError
+        simpleValidator,
+        onSelectHandler
     } = props;
-    // answer.length > 0 && checkValidationError(question,simpleValidator.current.fieldValid(question));
     return (
         <div className='wrapper'>
             <div className={classname}>
@@ -52,14 +53,26 @@ export const Card: React.FC<IProps> = (props) => {
                 </section>
                 <section className={toggleExpandedState ? 'descRow' : 'invisible'}>
                     <Description text={description} />
-                    <Input
-                        answer={answer}
-                        isCardDisabled={isCardDisabled}
-                        type={inputType}
-                        placeHolderText={placeHolderText}
-                        onChangeHandler={onChangeHandler}
-                        onBlur={simpleValidator.current.showMessageFor(question)}
-                    />
+                    { questionCount === 2 ?
+                        <select
+                            id="Gender"
+                            name="PetitionerGender"
+                            className="select-css"
+                            value={answer}
+                            onChange={onSelectHandler}
+                        >
+                            <option value="Other">Other</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select> :   <Input
+                            answer={answer}
+                            isCardDisabled={isCardDisabled}
+                            type={inputType}
+                            placeHolderText={placeHolderText}
+                            onChangeHandler={onChangeHandler}
+                            onBlur={simpleValidator.current.showMessageFor(question)}
+                        />}
+
                     {answer.length > 0 && simpleValidator.current.message(question, answer, validation)}
                 </section>
                 <section className={toggleExpandedState ? 'btnRow' : 'invisible'}>

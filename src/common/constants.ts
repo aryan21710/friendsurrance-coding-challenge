@@ -15,7 +15,6 @@ export const data = [{
     submitBtnText: 'Submit',
     statusIconColor: GREY,
     validation: 'required|alpha',
-    validationError: false
 }, {
     question: 'Last Name',
     inputType : 'text',
@@ -30,7 +29,35 @@ export const data = [{
     submitBtnText: 'Submit',
     statusIconColor: GREY,
     validation: 'required|alpha',
-    validationError: false
+},
+{
+    question: 'Gender',
+    inputType : 'number',
+    answer: '',
+    isCardDisabled: true,
+    description: 'Please Enter Your Gender',
+    toggleExpandedState: false,
+    submitBtnColor : GREY,
+    placeHolderText: 'Enter Your Age',
+    isCardSubmitted: false,
+    classname: 'collapse disabled',
+    submitBtnText: 'Submit',
+    statusIconColor: GREY,
+    validation: 'required|numeric|min:18,num|max:90,num',
+}, {
+    question: 'Age',
+    inputType : 'number',
+    answer: '',
+    isCardDisabled: true,
+    description: 'Please Enter Your Age In Years',
+    toggleExpandedState: false,
+    submitBtnColor : GREY,
+    placeHolderText: 'Enter Your Age',
+    isCardSubmitted: false,
+    classname: 'collapse disabled',
+    submitBtnText: 'Submit',
+    statusIconColor: GREY,
+    validation: 'required|numeric|min:18,num|max:90,num',
 }, {
     question: 'Email',
     inputType : 'email',
@@ -44,23 +71,7 @@ export const data = [{
     classname: 'collapse disabled',
     submitBtnText: 'Submit',
     statusIconColor: GREY,
-    validation: "required|between:5,100|email",
-    validationError: false
-}, {
-    question: 'DOB',
-    inputType : 'date',
-    answer: '',
-    isCardDisabled: true,
-    description: 'Please Enter Your Date Of Birth',
-    toggleExpandedState: false,
-    submitBtnColor : GREY,
-    placeHolderText: 'Enter Your Email Address',
-    isCardSubmitted: false,
-    classname: 'collapse disabled',
-    submitBtnText: 'Submit',
-    statusIconColor: GREY,
-    validation: 'required|alpha',
-    validationError: false
+    validation: 'required|between:5,100|email',
 }];
 
 /*
