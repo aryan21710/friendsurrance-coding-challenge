@@ -4,16 +4,18 @@ import { Button } from '../Button';
 import { Title } from '../Title';
 import { Description } from '../Description';
 import { Status } from '../Status';
+import { IData } from '../../../common/interfaces';
 
 import { BLUE, GREEN, GREY } from '../../../common/constants';
 import './index.scss';
 import '../../../../node_modules/font-awesome/css/font-awesome.min.css';
-interface IProps {
-	isCardDisabled?: boolean;
-	toggleHeight: boolean;
-	toggleHeightHandler: () => void;
+
+interface IProps extends IData {
+    toggleExpandedHandler: ((event: React.MouseEvent<HTMLElement, MouseEvent>) => void) | undefined
 }
-export const Card: React.FC<IProps> = ({ isCardDisabled, toggleHeight, toggleHeightHandler }) => {
+
+export const Card: React.FC<IProps> = (props) => {
+    const { question, description, inputType, answer, isCardDisabled, toggleExpandedState, placeHolderText, submitBtnColor, toggleExpandedHandler } = props;
     const onClickHandler = () => {
         alert('hi');
     };
@@ -22,22 +24,23 @@ export const Card: React.FC<IProps> = ({ isCardDisabled, toggleHeight, toggleHei
     };
     return (
         <div className='wrapper'>
-            <div className={toggleHeight ? 'expand' : 'collapse'}>
+            <div className={toggleExpandedState ? 'expand' : 'collapse'}>
                 <section className='titleRow'>
-                    <Title text={'FIRST NAME:-'} />
+                    <Title text={question} />
                     <Title text={'YOUR NAME'} />
                     <Status/>
                 </section>
-                <section className={toggleHeight ? 'descRow' : 'invisible'}>
-                    <Description text={'Please Enter Your First Name:-'} />
+                <section className={toggleExpandedState ? 'descRow' : 'invisible'}>
+                    <Description text={description} />
                     <Input
+                        answer={answer}
                         isCardDisabled={isCardDisabled}
-                        type={'text'}
-                        placeHolderText={'Enter Your Name'}
+                        type={inputType}
+                        placeHolderText={placeHolderText}
                         onChangeHandler={onChangeHandler}
                     />
                 </section>
-                <section className={toggleHeight ? 'btnRow' : 'invisible'}>
+                <section className={toggleExpandedState ? 'btnRow' : 'invisible'}>
                     <Button
                         isCardDisabled={isCardDisabled}
                         onClickHandler={onClickHandler}
@@ -48,7 +51,7 @@ export const Card: React.FC<IProps> = ({ isCardDisabled, toggleHeight, toggleHei
                 </section>
             </div>
             <span className='toggle'>
-                <i className={toggleHeight ? 'fa fa-minus' : 'fa fa-plus'} onClick={toggleHeightHandler}></i>
+                <i className={toggleExpandedState ? 'fa fa-minus' : 'fa fa-plus'} onClick={toggleExpandedHandler}></i>
             </span>
         </div>
     );

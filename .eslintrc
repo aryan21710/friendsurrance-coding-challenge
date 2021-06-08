@@ -11,7 +11,7 @@
 		"plugin:@typescript-eslint/recommended"
 	],
 	"rules": {
-		"no-console": "error",
+		"no-console": "warn",
 		"no-trailing-spaces": "warn",
 		"object-curly-spacing": ["warn", "always"],
 		"quotes": ["warn", "single"],
