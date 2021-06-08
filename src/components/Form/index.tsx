@@ -16,6 +16,7 @@ const Form: React.FC = () => {
                     ...data,
                     toggleExpandedState: !data.toggleExpandedState,
                     classname: !data.toggleExpandedState ? 'expand' : 'collapse',
+                   
                 };
             } else {
                 if (data.isCardSubmitted) {
@@ -34,7 +35,7 @@ const Form: React.FC = () => {
                 return {
                     ...data,
                     isCardSubmitted: false,
-                    submitBtnColor: GREEN,
+                    submitBtnColor: GREY,
                     answer: ''
                 };
             } else {
@@ -50,7 +51,7 @@ const Form: React.FC = () => {
                 return {
                     ...data,
                     isCardSubmitted: true,
-                    submitBtnColor: BLUE
+                    submitBtnColor: GREEN
                 };
             } else {
                 return { ...data };
@@ -65,7 +66,8 @@ const Form: React.FC = () => {
                 return {
                     ...data,
                     answer: element.value,
-                    placeHolderText: ''
+                    placeHolderText: '',
+                    submitBtnColor: element.value.length > 0 ? GREEN : GREY
                 };
             } else {
                 return { ...data };

@@ -7,12 +7,10 @@ interface IProps {
 }
 export const Status: React.FC<IProps> = ({ isCardDisabled, isCardSubmitted }) => {
     const deriveStyle = () => {
-        if (isCardDisabled) {
-            return { background: GREY };
-        } else if (isCardSubmitted) {
-            return { background: BLUE };
-        } else {
+        if (isCardSubmitted) {
             return { background: GREEN };
+        } else {
+            return { background: GREY };
         }
     };
     return <div className='status' style={deriveStyle()}></div>;

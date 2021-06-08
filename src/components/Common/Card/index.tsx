@@ -61,7 +61,7 @@ export const Card: React.FC<IProps> = (props) => {
                     <Button
                         isCardDisabled={isCardDisabled}
                         onClickHandler={onSubmitHandler}
-                        bkgColor={submitBtnColor}
+                        bkgColor={answer.length > 0 ? submitBtnColor : GREY}
                         text={isCardSubmitted ? 'EDIT' : 'SUBMIT'}
                     />
                     <Button onClickHandler={onCancelHandler} bkgColor={GREY} text='Cancel' />

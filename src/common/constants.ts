@@ -8,7 +8,7 @@ export const data = [{
     isCardDisabled: false,
     description: 'Please Enter Your First Name',
     toggleExpandedState: false,
-    submitBtnColor : GREEN,
+    submitBtnColor : GREY,
     placeHolderText: 'Enter Your First Name',
     isCardSubmitted: false,
     classname: 'collapse'
