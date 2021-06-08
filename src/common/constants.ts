@@ -76,6 +76,36 @@ export const data = [
         submitBtnText: 'Submit',
         statusIconColor: GREY,
         validation: 'required|between:5,100|email'
+    },
+    {
+        question: 'Phone Number',
+        inputType: 'text',
+        answer: '',
+        isCardDisabled: false,
+        description: 'Please Enter Your Phone Number',
+        toggleExpandedState: false,
+        submitBtnColor: GREY,
+        placeHolderText: 'Enter Your Phone Number',
+        isCardSubmitted: false,
+        classname: 'collapse',
+        submitBtnText: 'Submit',
+        statusIconColor: GREY,
+        validation: 'required|numeric|between:8,11|phone'
+    },
+    {
+        question: 'Address',
+        inputType: 'text',
+        answer: '',
+        isCardDisabled: false,
+        description: 'Please Enter Your Residential Address',
+        toggleExpandedState: false,
+        submitBtnColor: GREY,
+        placeHolderText: 'Enter Your Residential Address',
+        isCardSubmitted: false,
+        classname: 'collapse',
+        submitBtnText: 'Submit',
+        statusIconColor: GREY,
+        validation: 'required|between:5,100'
     }
 ];
 

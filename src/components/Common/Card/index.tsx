@@ -47,8 +47,8 @@ export const Card: React.FC<IProps> = (props) => {
         <div className='wrapper'>
             <div className={classname}>
                 <section className='titleRow'>
-                    <Title text={question} />
-                    <Title text={answer.length > 0 ? `${answer.charAt(0).toUpperCase()}${answer.substr(1)}` : answer} />
+                    <Title textType="question" text={question} />
+                    <Title textType="answer" text={answer.length > 0 ? `${answer.charAt(0).toUpperCase()}${answer.substr(1)}` : answer} />
                     <Status statusIconColor={statusIconColor}/>
                 </section>
                 <section className={toggleExpandedState ? 'descRow' : 'invisible'}>

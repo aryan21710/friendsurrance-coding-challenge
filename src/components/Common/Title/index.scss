@@ -1,6 +1,6 @@
 .question {
 	border-bottom: 1px solid grey;
-	width: 20vw;
+	width: 10vw;
 	text-align: left;
 	padding: 1vh 0vw;
 	text-decoration: none;
@@ -8,3 +8,15 @@
 	font-size: 1.2vw;
 	cursor: no-drop;
 }
+
+.answer {
+	border-bottom: 1px solid grey;
+	width: 40vw;
+	text-align: left;
+	padding: 1vh 0vw;
+	text-decoration: none;
+	color: black;
+	font-size: 1.2vw;
+	cursor: no-drop;
+}
+

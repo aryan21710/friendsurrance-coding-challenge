@@ -18,7 +18,7 @@
 
 .collapse {
 	width: 80vw;
-	height: 6vh;
+	height: 7vh;
 	border-radius: 5px;
 	border: 1px solid black;
 	display: flex;
@@ -39,14 +39,14 @@
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: space-around;
-	padding: 0vh 6vw;
+	padding: 0vh 5vw;
 	height: 14vh;
 	margin: 2vh 0vw;
 
 }
 .btnRow {
 	justify-content: start;
-	margin-left: 6vw;
+	margin-left: 5vw;
 }
 
 .btnRow > button {
