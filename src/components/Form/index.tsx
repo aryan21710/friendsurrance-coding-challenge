@@ -17,7 +17,6 @@ const Form: React.FC = () => {
                     ...data,
                     toggleExpandedState: !data.toggleExpandedState,
                     classname: !data.toggleExpandedState ? 'expand' : 'collapse',
-
                 };
             } else {
                 if (data.isCardSubmitted) {
@@ -52,10 +51,11 @@ const Form: React.FC = () => {
 
     const onSubmitHandler = (cardid: string)=>(e: React.MouseEvent<HTMLButtonElement>)=>{
         let nextCard = -1;
-        const validationError = cardid === 'Gender' || cardid === 'Insurance Status' ? true : simpleValidator.current.fieldValid(cardid);
-        console.log('validationError', validationError);
+        let validationError=false;
         const updatedFormData = formData.map((data, idx) => {
             if (data.question === cardid) {
+                validationError = data.inputType==='select' ? true : simpleValidator.current.fieldValid(cardid);
+                console.log('validationError', validationError);
                 nextCard = data.skipCardsOnAnswer && data.skipCardsOnAnswer === data.inputValue ?
                     idx + data.skipCards : idx + 1;
                 return {
