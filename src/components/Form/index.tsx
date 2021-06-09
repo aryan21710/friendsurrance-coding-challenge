@@ -49,13 +49,15 @@ const Form: React.FC = () => {
         setFormData([...updatedFormData]);
     };
 
+
     const onSubmitHandler = (cardid: string)=>(e: React.MouseEvent<HTMLButtonElement>)=>{
         let nextCard = -1;
-        const validationError = cardid === 'Gender' || cardid === 'Insurance Status'? true : simpleValidator.current.fieldValid(cardid);
+        const validationError = cardid === 'Gender' || cardid === 'Insurance Status' ? true : simpleValidator.current.fieldValid(cardid);
         console.log('validationError', validationError);
         const updatedFormData = formData.map((data, idx) => {
             if (data.question === cardid) {
-                nextCard = idx + 1;
+                nextCard = data.skipCardsOnAnswer && data.skipCardsOnAnswer === data.inputValue ?
+                    idx + data.skipCards : idx + 1;
                 return {
                     ...data,
                     answer: validationError ? data.inputValue : '',
@@ -77,6 +79,8 @@ const Form: React.FC = () => {
         });
         setFormData([...updatedFormData]);
     };
+
+
     const onChangeHandler = (cardid: string)=>(e: React.ChangeEvent<HTMLInputElement>) => {
         const updatedFormData = formData.map((data) => {
             if (data.question === cardid) {
@@ -136,6 +140,8 @@ const Form: React.FC = () => {
                     validation={data.validation}
                     simpleValidator={simpleValidator}
                     optionsArr={data.optionsArr}
+                    skipCards={data.skipCards}
+                    skipCardsOnAnswer={data.skipCardsOnAnswer}
                     onSelectHandler={onSelectHandler(data.question)}
                 />
             ))}

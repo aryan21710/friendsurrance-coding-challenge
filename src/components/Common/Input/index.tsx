@@ -17,7 +17,7 @@ export const Input: React.FC<IProps> = ({ optionsArr, onSelectHandler, inputValu
         value={inputValue}
         onChange={onSelectHandler}
     >
-        {optionsArr.map((options,idx)=><option key={idx} value={options}>{options}</option>)}
+        {optionsArr.map((options, idx)=><option key={idx} value={options}>{options}</option>)}
     </select>
 ) : (
     <input disabled={isCardDisabled} className={isCardDisabled ? 'disabled input' : 'input'} type={type} value={inputValue}
